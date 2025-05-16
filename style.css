@@ -1,0 +1,225 @@
+/* Definição de variáveis para tema claro (padrão) */
+:root {
+    /* Cores de fundo */
+    --bg-color: #e4e4ee;          /* Cor de fundo da página */
+    --calc-bg: #d5d5e9;           /* Cor de fundo da calculadora */
+    --visor-bg: #94a078;          /* Cor de fundo do visor */
+    
+    /* Cores de texto */
+    --text-color: #242325;        /* Cor do texto principal */
+    --number-color: white;        /* Cor do texto dos botões numéricos */
+    --clear-color: white;         /* Cor do texto do botão clear */
+    --operator-color: white;      /* Cor do texto dos operadores */
+    
+    /* Cores de botões */
+    --number-bg: #1f1d1d;         /* Cor de fundo dos botões numéricos */
+    --clear-bg: orange;           /* Cor de fundo do botão clear */
+    --operator-bg: #b3afc2;       /* Cor de fundo dos operadores padrão */
+    --equal-bg: rgb(223, 66, 66); /* Cor de fundo do botão igual */
+    --sum-bg: #3051c0;            /* Cor de fundo do botão de soma */
+    
+    /* Bordas e sombras */
+    --border-color: rgb(194, 187, 187);   /* Cor das bordas */
+    --shadow-color: rgba(0, 0, 0, 0.3);   /* Cor das sombras principais */
+    --shadow-btn-color: rgba(0, 0, 0, 0.5); /* Cor das sombras dos botões */
+}
+
+/* Variáveis para tema escuro - ativado quando o atributo data-theme="dark" estiver presente no body */
+[data-theme="dark"] {
+    /* Cores de fundo para tema escuro */
+    --bg-color: #1a1a2e;          /* Cor escura de fundo da página */
+    --calc-bg: #282846;           /* Cor escura de fundo da calculadora */
+    --visor-bg: #3a4d39;          /* Cor escura de fundo do visor */
+    
+    /* Cores de texto para tema escuro */
+    --text-color: #e6e6e6;        /* Cor clara do texto principal */
+    --number-color: #e6e6e6;      /* Cor clara do texto dos botões numéricos */
+    --clear-color: white;         /* Cor do texto do botão clear */
+    --operator-color: white;      /* Cor do texto dos operadores */
+    
+    /* Cores de botões para tema escuro */
+    --number-bg: #333333;         /* Cor escura de fundo dos botões numéricos */
+    --clear-bg: #c46210;          /* Cor escura de fundo do botão clear */
+    --operator-bg: #4a4e69;       /* Cor escura de fundo dos operadores padrão */
+    --equal-bg: #9e2a2b;          /* Cor escura de fundo do botão igual */
+    --sum-bg: #1e3a8a;            /* Cor escura de fundo do botão de soma */
+    
+    /* Bordas e sombras para tema escuro */
+    --border-color: #444444;           /* Cor escura das bordas */
+    --shadow-color: rgba(0, 0, 0, 0.5);  /* Sombras mais intensas */
+    --shadow-btn-color: rgba(0, 0, 0, 0.7); /* Sombras de botões mais intensas */
+}
+
+/* Reset e definição básica de fonte */
+* {
+    margin: auto;
+    font-family: "Montserrat", sans-serif;
+}
+
+/* Estilo do corpo da página */
+body {
+    background-color: var(--bg-color);
+    transition: background-color 0.3s ease; /* Transição suave ao trocar de tema */
+}
+
+/* Estilo da margem superior da calculadora */
+.margem {
+    display: grid;
+    grid-template-columns: auto auto 1fr; /* Estrutura para círculos e botão de tema */
+    height: 50px;
+    align-items: center;
+}
+
+/* Botão para alternar entre tema claro e escuro */
+#theme-toggle {
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-right: 20px;
+    justify-self: end; /* Alinha à direita na grid */
+    color: var(--text-color);
+    transition: transform 0.2s; /* Efeito de animação ao passar o mouse */
+}
+
+/* Efeito de hover no botão de tema */
+#theme-toggle:hover {
+    transform: scale(1.2); /* Aumenta ligeiramente o botão */
+}
+
+/* Círculos decorativos no topo da calculadora */
+.circulo {
+    position: relative;
+    width: 10px;
+    height: 7px;
+    background-color: var(--number-bg);
+    margin: 1px;
+    border-radius: 3px;
+    top: 5px;
+    left: -120px; /* Posicionamento à esquerda */
+    box-shadow: 1px 1px 2px var(--shadow-btn-color);
+}
+
+/* Container principal da calculadora */
+.calculadora {
+    display: grid;
+    margin-top: 80px;
+    height: 570px;
+    width: 340px;
+    background-color: var(--calc-bg);
+    border-radius: 15px;
+    box-shadow: 7px 7px 10px var(--shadow-color);
+    gap: 5px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Transição suave ao trocar de tema */
+}
+
+/* Visor da calculadora onde os números aparecem */
+.visor {
+    margin-left: 15px;
+    margin-top: 10px;
+    background-color: var(--visor-bg);
+    width: 300px;
+    height: 70px;
+    border-radius: 10px;
+    border: solid var(--border-color) 1px;
+    box-shadow: 7px 7px 10px var(--shadow-color);
+    transition: background-color 0.3s ease;
+}
+
+/* Título h1 usado para exibir o resultado no visor */
+h1 {
+    text-align: end; /* Alinha o texto à direita */
+    margin: 15px;
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+/* Grid de botões da calculadora */
+.button {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr; /* 4 colunas de mesmo tamanho */
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr; /* 5 linhas de mesmo tamanho */
+    gap: 10px;
+    margin: 20px;
+    margin-top: 5px;
+}
+
+/* Estilo dos botões numéricos */
+.number {
+    width: 60px;
+    height: 60px;
+    margin: 4px;
+    background-color: var(--number-bg);
+    border: solid var(--border-color) 1px;
+    color: var(--number-color);
+    border-radius: 50%; /* Botões circulares */
+    font-size: 1.5rem;
+    box-shadow: 3px 3px 5px var(--shadow-btn-color);
+    padding: 0 10px 0 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Botão de limpar (clear) */
+#clear {
+    height: 60px;
+    width: 140px;
+    background-color: var(--clear-bg);
+    margin: 4px;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    border: solid var(--border-color) 1px;
+    color: var(--clear-color);
+    box-shadow: 3px 3px 5px var(--shadow-btn-color);
+    text-align: center;
+    grid-column: span 2; /* Ocupa duas colunas */
+    grid-row: 1;
+    transition: background-color 0.3s ease;
+}
+
+/* Estilo dos botões de operadores */
+.operador {
+    width: 60px;
+    height: 60px;
+    margin: 4px;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    background-color: var(--operator-bg);
+    border: solid var(--border-color) 1px;
+    color: var(--operator-color);
+    box-shadow: 3px 3px 5px var(--shadow-btn-color);
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+/* Botão de igual (=) */
+#equal {
+    grid-column: 4;
+    grid-row: 5;
+    background-color: var(--equal-bg);
+}
+
+/* Botão de soma (+) - estilizado diferente dos outros operadores */
+#operador_sum {
+    grid-column: 4;
+    grid-row: 3 / span 2; /* Ocupa duas linhas */
+    background-color: var(--sum-bg);
+    height: 140px;
+    border-radius: 30px; /* Formato mais oval */
+}
+
+/* Estilo do rodapé da página */
+.footer-content {
+    text-align: center;
+    margin-top: 80px;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+/* Efeito de hover em todos os botões */
+button:hover {
+    transform: scale(1.1); /* Aumenta ligeiramente o botão ao passar o mouse */
+}
