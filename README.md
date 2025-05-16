@@ -1,7 +1,7 @@
 # Calculadora Web
 
-![Calculadora - Tema Claro](./images/calculadora-tema-claro.jpg)
-![Calculadora - Tema Escuro](./images/calculadora-tema-escuro.jpg)
+![Calculadora - Tema Claro](./img/calculadora-tema-claro.jpg)
+![Calculadora - Tema Escuro](./img/calculadora-tema-escuro.jpg)
 
 ## Descrição
 
